@@ -8,12 +8,13 @@
 import Foundation
 
 typealias VoidBlock = (() -> Void)
+typealias ResponseBlock = ((ResponseType) -> Void)
 
 class HomeViewModel {
     
     private let firestoreManager: FirestoreManager
     private var todoList: [TodoItem] = []
-    var dataNotifier: VoidBlock?
+    var dataNotifier: ResponseBlock?
     
     init(firestoreManager: FirestoreManager) {
         self.firestoreManager = firestoreManager
@@ -22,6 +23,7 @@ class HomeViewModel {
     
     // MARK: - Service Calls
     func fetchData() {
+        dataNotifier?(.loading)
         firestoreManager.fetchData(collection: .todos, completion: dataHandler)
     }
     
@@ -34,12 +36,13 @@ class HomeViewModel {
     lazy var dataHandler: FirestoreManager.R = { [weak self] snapshot, error in
         if let error = error {
             print(error.localizedDescription)
+            self?.dataNotifier?(.failure)
         } else if let snapshot = snapshot {
             for document in snapshot.documents {
                 self?.todoList.append(TodoListDataFormatter.formatData(data: document.data()))
             }
+            self?.dataNotifier?(.success)
         }
-        self?.dataNotifier?()
     }
     
     lazy var saveDataHandler: FirestoreManager.E = { [weak self] error in
@@ -50,7 +53,7 @@ class HomeViewModel {
         }
     }
     
-    func subscribeData(with notifier: @escaping VoidBlock) {
+    func subscribeData(with notifier: @escaping ResponseBlock) {
         dataNotifier = notifier
     }
     

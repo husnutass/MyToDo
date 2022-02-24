@@ -16,6 +16,7 @@ class MainTableView: BaseView {
         view.translatesAutoresizingMaskIntoConstraints = false
         view.delegate = self
         view.dataSource = self
+        view.register(MainTableViewCell.self, forCellReuseIdentifier: MainTableViewCell.identifier)
         return view
     }()
     

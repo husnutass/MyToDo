@@ -26,9 +26,7 @@ class HomeView: BaseView {
     }
     
     func reloadTableView() {
-        DispatchQueue.main.async {
-            self.tableView.reloadData()
-        }
+        self.tableView.reloadData()
     }
     
 }

@@ -9,6 +9,13 @@ import UIKit
 
 class MainTableViewCell: UITableViewCell {
     
+    lazy var titleLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textAlignment = .left
+        return label
+    }()
+    
     private var cellData: TodoItem?
     
     static var identifier: String {
@@ -26,10 +33,18 @@ class MainTableViewCell: UITableViewCell {
     
     func setupView() {
         addSubview(contentView)
+        contentView.addSubview(titleLabel)
+        
+        titleLabel.centerView(to: contentView)
     }
     
     func setData(with data: TodoItem?) {
-        self.cellData = data
+        cellData = data
+        updateViewData()
+    }
+    
+    private func updateViewData() {
+        titleLabel.text = cellData?.text
     }
     
 }

@@ -17,20 +17,40 @@ class HomeViewController: BaseViewController<HomeViewModel> {
         return view
     }()
     
+    private lazy var indicatorView: UIActivityIndicatorView = {
+        let view = UIActivityIndicatorView(style: .large)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
     override func setupView() {
         title = "MyToDo"
         navigationController?.navigationBar.prefersLargeTitles = true
         view.backgroundColor = .systemBackground
         view.addSubview(homeView)
+        homeView.addSubview(indicatorView)
         
         homeView.expandViewWithSafeArea(to: view)
+        indicatorView.centerView(to: homeView)
         
-        viewModel.fetchData()
         viewModel.subscribeData(with: dataHandler)
+        viewModel.fetchData()
     }
     
-    private lazy var dataHandler: VoidBlock = { [weak self] in
-        self?.homeView.reloadTableView()
+    private lazy var dataHandler: ResponseBlock = { [weak self] response in
+        DispatchQueue.main.async {
+            switch response {
+            case .loading:
+                self?.indicatorView.startAnimating()
+            case .failure:
+                self?.indicatorView.stopAnimating()
+                self?.homeView.reloadTableView()
+                self?.showAlert(title: "Error Occured!")
+            case .success:
+                self?.indicatorView.stopAnimating()
+                self?.homeView.reloadTableView()
+            }
+        }
     }
 
 }
