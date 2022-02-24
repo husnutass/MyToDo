@@ -13,6 +13,7 @@ class HomeViewController: BaseViewController<HomeViewModel> {
     private lazy var homeView: HomeView = {
         let view = HomeView()
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.delegate = viewModel
         return view
     }()
     
@@ -25,6 +26,11 @@ class HomeViewController: BaseViewController<HomeViewModel> {
         homeView.expandViewWithSafeArea(to: view)
         
         viewModel.fetchData()
+        viewModel.subscribeData(with: dataHandler)
+    }
+    
+    private lazy var dataHandler: VoidBlock = { [weak self] in
+        self?.homeView.reloadTableView()
     }
 
 }

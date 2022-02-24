@@ -9,9 +9,12 @@ import UIKit
 
 class HomeView: BaseView {
     
+    var delegate: TableViewDataProtocol?
+    
     private lazy var tableView: MainTableView = {
         let view = MainTableView()
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.delegate = self
         return view
     }()
     
@@ -22,4 +25,21 @@ class HomeView: BaseView {
         tableView.expandView(to: self)
     }
     
+    func reloadTableView() {
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+    }
+    
+}
+
+// MARK: - TableViewDataProtocol
+extension HomeView: TableViewDataProtocol {
+    func getNumberOfRowsInSection() -> Int {
+        return delegate?.getNumberOfRowsInSection() ?? 0
+    }
+    
+    func getData(in row: Int) -> TodoItem? {
+        return delegate?.getData(in: row)
+    }
 }

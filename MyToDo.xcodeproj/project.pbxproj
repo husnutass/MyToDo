@@ -31,6 +31,7 @@
 		BCE1818327C6C4B1000D2185 /* ViewBuilderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE1818227C6C4B1000D2185 /* ViewBuilderProtocol.swift */; };
 		BCE1818527C6CC32000D2185 /* TodoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE1818427C6CC32000D2185 /* TodoItem.swift */; };
 		BCE1818827C6DDF1000D2185 /* TodoListDataFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE1818727C6DDF1000D2185 /* TodoListDataFormatter.swift */; };
+		BCFF012D27C808B60086BFF0 /* TableViewDataProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCFF012C27C808B60086BFF0 /* TableViewDataProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,6 +58,7 @@
 		BCE1818227C6C4B1000D2185 /* ViewBuilderProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewBuilderProtocol.swift; sourceTree = "<group>"; };
 		BCE1818427C6CC32000D2185 /* TodoItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoItem.swift; sourceTree = "<group>"; };
 		BCE1818727C6DDF1000D2185 /* TodoListDataFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListDataFormatter.swift; sourceTree = "<group>"; };
+		BCFF012C27C808B60086BFF0 /* TableViewDataProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewDataProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -210,6 +212,7 @@
 			isa = PBXGroup;
 			children = (
 				BCE1818227C6C4B1000D2185 /* ViewBuilderProtocol.swift */,
+				BCFF012C27C808B60086BFF0 /* TableViewDataProtocol.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -304,6 +307,7 @@
 				BCE1817C27C6BF3F000D2185 /* FirestoreManager.swift in Sources */,
 				BC7D9BF127C2E5AC00ECD1F6 /* UIViewController+Extension.swift in Sources */,
 				BCE1818527C6CC32000D2185 /* TodoItem.swift in Sources */,
+				BCFF012D27C808B60086BFF0 /* TableViewDataProtocol.swift in Sources */,
 				BC7D9BF027C2E5AC00ECD1F6 /* UIView+Extension.swift in Sources */,
 				BC7D9BC327C03C3500ECD1F6 /* AppDelegate.swift in Sources */,
 				BC7D9BE927C2DFB000ECD1F6 /* MainTableViewCell.swift in Sources */,

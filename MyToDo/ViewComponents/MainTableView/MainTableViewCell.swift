@@ -9,6 +9,8 @@ import UIKit
 
 class MainTableViewCell: UITableViewCell {
     
+    private var cellData: TodoItem?
+    
     static var identifier: String {
         String(describing: self)
     }
@@ -24,6 +26,10 @@ class MainTableViewCell: UITableViewCell {
     
     func setupView() {
         addSubview(contentView)
+    }
+    
+    func setData(with data: TodoItem?) {
+        self.cellData = data
     }
     
 }

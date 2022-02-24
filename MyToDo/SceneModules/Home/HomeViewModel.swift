@@ -7,10 +7,13 @@
 
 import Foundation
 
+typealias VoidBlock = (() -> Void)
+
 class HomeViewModel {
     
-    let firestoreManager: FirestoreManager
-    var todoList: [TodoItem] = []
+    private let firestoreManager: FirestoreManager
+    private var todoList: [TodoItem] = []
+    var dataNotifier: VoidBlock?
     
     init(firestoreManager: FirestoreManager) {
         self.firestoreManager = firestoreManager
@@ -36,6 +39,7 @@ class HomeViewModel {
                 self?.todoList.append(TodoListDataFormatter.formatData(data: document.data()))
             }
         }
+        self?.dataNotifier?()
     }
     
     lazy var saveDataHandler: FirestoreManager.E = { [weak self] error in
@@ -46,4 +50,19 @@ class HomeViewModel {
         }
     }
     
+    func subscribeData(with notifier: @escaping VoidBlock) {
+        dataNotifier = notifier
+    }
+    
+}
+
+// MARK: - TableViewDataProtocol
+extension HomeViewModel: TableViewDataProtocol {
+    func getNumberOfRowsInSection() -> Int {
+        return todoList.count
+    }
+    
+    func getData(in row: Int) -> TodoItem? {
+        return todoList[row]
+    }
 }
