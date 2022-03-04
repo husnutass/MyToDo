@@ -10,4 +10,5 @@ import Foundation
 protocol TableViewDataProtocol {
     func getNumberOfRowsInSection() -> Int
     func getData(in row: Int) -> TodoItem?
+    func deleteItem(at index: Int)
 }

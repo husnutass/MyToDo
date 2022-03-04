@@ -15,6 +15,7 @@ class HomeViewModel {
     private let firestoreManager: FirestoreManager
     private var todoList: [TodoItem] = []
     var dataNotifier: ResponseBlock?
+    private var itemIndexToBeDeleted: Int?
     
     init(firestoreManager: FirestoreManager) {
         self.firestoreManager = firestoreManager
@@ -32,6 +33,12 @@ class HomeViewModel {
         firestoreManager.saveData(collection: .todos, data: data, completion: saveDataHandler)
     }
     
+    func deleteData(document: String) {
+        dataNotifier?(.loading)
+        firestoreManager.deleteData(collection: .todos, document: document, completion: deleteDataHandler)
+    }
+
+    
     // MARK: - Data Handlers
     lazy var dataHandler: FirestoreManager.R = { [weak self] snapshot, error in
         if let error = error {
@@ -39,7 +46,7 @@ class HomeViewModel {
             self?.dataNotifier?(.failure)
         } else if let snapshot = snapshot {
             for document in snapshot.documents {
-                self?.todoList.append(TodoListDataFormatter.formatData(data: document.data()))
+                self?.todoList.append(TodoListDataFormatter.formatData(data: document.data(), documentID: document.documentID))
             }
             self?.dataNotifier?(.success)
         }
@@ -48,8 +55,24 @@ class HomeViewModel {
     lazy var saveDataHandler: FirestoreManager.E = { [weak self] error in
         if let error = error {
             print(error.localizedDescription)
+            self?.dataNotifier?(.failure)
         } else {
             print("Success")
+            self?.dataNotifier?(.success)
+        }
+    }
+    
+    lazy var deleteDataHandler: FirestoreManager.E = { [weak self] error in
+        if let error = error {
+            print(error.localizedDescription)
+            self?.dataNotifier?(.failure)
+        } else {
+            guard let index = self?.itemIndexToBeDeleted else {
+                self?.dataNotifier?(.failure)
+                return
+            }
+            self?.todoList.remove(at: index)
+            self?.dataNotifier?(.success)
         }
     }
     
@@ -68,4 +91,10 @@ extension HomeViewModel: TableViewDataProtocol {
     func getData(in row: Int) -> TodoItem? {
         return todoList[row]
     }
+    
+    func deleteItem(at index: Int) {
+        itemIndexToBeDeleted = index
+        deleteData(document: todoList[index].documentID)
+    }
+    
 }

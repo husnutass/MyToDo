@@ -35,7 +35,8 @@ class MainTableViewCell: UITableViewCell {
         addSubview(contentView)
         contentView.addSubview(titleLabel)
         
-        titleLabel.centerView(to: contentView)
+        titleLabel.expandView(to: contentView, with: 20)
+        
     }
     
     func setData(with data: TodoItem?) {

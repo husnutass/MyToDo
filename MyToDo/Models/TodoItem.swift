@@ -9,12 +9,13 @@ import Foundation
 
 // MARK: - TodoList
 struct TodoItem: Codable {
+    let documentID: String
     let text, todoListDescription: String?
     let isDone: Int?
     let createdAt: String?
 
     enum CodingKeys: String, CodingKey {
-        case text
+        case text, documentID
         case todoListDescription = "description"
         case isDone, createdAt
     }

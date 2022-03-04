@@ -29,6 +29,10 @@ class HomeView: BaseView {
         self.tableView.reloadData()
     }
     
+    func deleteItem(at index: Int) {
+        delegate?.deleteItem(at: index)
+    }
+    
 }
 
 // MARK: - TableViewDataProtocol

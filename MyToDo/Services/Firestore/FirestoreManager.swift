@@ -23,4 +23,8 @@ class FirestoreManager: ServiceManagerProtocol {
         db.collection(collection.rawValue).addDocument(data: data, completion: completion)
     }
     
+    func deleteData(collection: FirestoreCollection, document: String, completion: @escaping E) {
+        db.collection(collection.rawValue).document(document).delete(completion: completion)
+    }
+    
 }

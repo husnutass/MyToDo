@@ -13,4 +13,5 @@ protocol ServiceManagerProtocol {
     
     func fetchData(collection: FirestoreCollection, completion: R)
     func saveData(collection: FirestoreCollection, data: [String : Any], completion: E)
+    func deleteData(collection: FirestoreCollection, document: String, completion: E)
 }
