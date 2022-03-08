@@ -10,7 +10,7 @@ import UIKit
 class HomeViewBuilder: ViewBuilderProtocol {
     
     static func build() -> UIViewController {
-        let viewModel = HomeViewModel(firestoreManager: FirestoreManager())
+        let viewModel = HomeViewModel()
         return HomeViewController(viewModel: viewModel)
     }
     

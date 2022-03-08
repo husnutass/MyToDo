@@ -12,25 +12,15 @@ typealias ResponseBlock = ((ResponseType) -> Void)
 
 class HomeViewModel {
     
-    private let firestoreManager: FirestoreManager
+    private let firestoreManager = FirestoreManager.shared
     private var todoList: [TodoItem] = []
     var dataNotifier: ResponseBlock?
     private var itemIndexToBeDeleted: Int?
-    
-    init(firestoreManager: FirestoreManager) {
-        self.firestoreManager = firestoreManager
-    }
-    
     
     // MARK: - Service Calls
     func fetchData() {
         dataNotifier?(.loading)
         firestoreManager.fetchData(collection: .todos, completion: dataHandler)
-    }
-    
-    func saveData() {
-        let data = ["text" : "deneme"]
-        firestoreManager.saveData(collection: .todos, data: data, completion: saveDataHandler)
     }
     
     func deleteData(document: String) {
@@ -52,16 +42,6 @@ class HomeViewModel {
         }
     }
     
-    lazy var saveDataHandler: FirestoreManager.E = { [weak self] error in
-        if let error = error {
-            print(error.localizedDescription)
-            self?.dataNotifier?(.failure)
-        } else {
-            print("Success")
-            self?.dataNotifier?(.success)
-        }
-    }
-    
     lazy var deleteDataHandler: FirestoreManager.E = { [weak self] error in
         if let error = error {
             print(error.localizedDescription)
@@ -76,6 +56,7 @@ class HomeViewModel {
         }
     }
     
+    // MARK: - Data Subscribables
     func subscribeData(with notifier: @escaping ResponseBlock) {
         dataNotifier = notifier
     }

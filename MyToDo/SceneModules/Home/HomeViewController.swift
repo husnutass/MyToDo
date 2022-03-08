@@ -17,37 +17,51 @@ class HomeViewController: BaseViewController<HomeViewModel> {
         return view
     }()
     
-    private lazy var indicatorView: UIActivityIndicatorView = {
-        let view = UIActivityIndicatorView(style: .large)
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
-    
     override func setupView() {
-        title = "MyToDo"
-        navigationController?.navigationBar.prefersLargeTitles = true
+        setupNavigationBar()
+        
         view.backgroundColor = .systemBackground
         view.addSubview(homeView)
-        homeView.addSubview(indicatorView)
         
         homeView.expandViewWithSafeArea(to: view)
-        indicatorView.centerView(to: homeView)
         
         viewModel.subscribeData(with: dataHandler)
         viewModel.fetchData()
+    }
+    
+    private func setupNavigationBar() {
+        title = "MyToDo"
+        navigationController?.navigationBar.prefersLargeTitles = true
+        
+        let addButton = UIButton(type: .contactAdd)
+        addButton.addTarget(self, action: #selector(openAddItemView), for: .touchUpInside)
+        let addButtonItem = UIBarButtonItem(customView: addButton)
+        navigationItem.setRightBarButton(addButtonItem, animated: true)
+    }
+    
+    @objc func openAddItemView() {
+        present(AddItemViewBuilder.build(), animated: true, completion: nil)
+    }
+    
+    private func showIndicatorView() {
+        LoadingIndicatorManager.shared.startLoading()
+    }
+    
+    private func hideIndicatorView() {
+        LoadingIndicatorManager.shared.stopLoading()
     }
     
     private lazy var dataHandler: ResponseBlock = { [weak self] response in
         DispatchQueue.main.async {
             switch response {
             case .loading:
-                self?.indicatorView.startAnimating()
+                self?.showIndicatorView()
             case .failure:
-                self?.indicatorView.stopAnimating()
+                self?.hideIndicatorView()
                 self?.homeView.reloadTableView()
                 self?.showAlert(title: "Error Occured!")
             case .success:
-                self?.indicatorView.stopAnimating()
+                self?.hideIndicatorView()
                 self?.homeView.reloadTableView()
             }
         }

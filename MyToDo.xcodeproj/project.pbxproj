@@ -7,10 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BC5BAA7927D7F5E800BD1D86 /* LoadingIndicatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5BAA7827D7F5E800BD1D86 /* LoadingIndicatorViewController.swift */; };
+		BC5BAA7C27D7F94200BD1D86 /* LoadingIndicatorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5BAA7B27D7F94200BD1D86 /* LoadingIndicatorManager.swift */; };
+		BC5BAA7E27D7FD0200BD1D86 /* UIApplication+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5BAA7D27D7FD0200BD1D86 /* UIApplication+Extension.swift */; };
+		BC5BAA8027D8041C00BD1D86 /* LoadingIndicatorManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5BAA7F27D8041B00BD1D86 /* LoadingIndicatorManagerProtocol.swift */; };
 		BC60B40927C57C5E00F2B34B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BC60B40827C57C5E00F2B34B /* GoogleService-Info.plist */; };
 		BC60B40C27C57D4700F2B34B /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = BC60B40B27C57D4700F2B34B /* FirebaseAnalytics */; };
 		BC60B40E27C57D4700F2B34B /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = BC60B40D27C57D4700F2B34B /* FirebaseAuth */; };
 		BC60B41027C57D4700F2B34B /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = BC60B40F27C57D4700F2B34B /* FirebaseFirestore */; };
+		BC7C398D27D2B1630031471B /* AddItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7C398C27D2B1630031471B /* AddItemViewController.swift */; };
+		BC7C398F27D2B1730031471B /* AddItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7C398E27D2B1730031471B /* AddItemViewModel.swift */; };
+		BC7C399127D2B18F0031471B /* AddItemViewBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7C399027D2B18F0031471B /* AddItemViewBuilder.swift */; };
+		BC7C399427D3841D0031471B /* AddItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7C399327D3841D0031471B /* AddItemView.swift */; };
+		BC7C399827D4F79C0031471B /* ItemTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7C399727D4F79C0031471B /* ItemTextField.swift */; };
 		BC7D9BC327C03C3500ECD1F6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7D9BC227C03C3500ECD1F6 /* AppDelegate.swift */; };
 		BC7D9BC527C03C3500ECD1F6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7D9BC427C03C3500ECD1F6 /* SceneDelegate.swift */; };
 		BC7D9BCC27C03C3600ECD1F6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BC7D9BCB27C03C3600ECD1F6 /* Assets.xcassets */; };
@@ -36,7 +45,16 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BC5BAA7827D7F5E800BD1D86 /* LoadingIndicatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingIndicatorViewController.swift; sourceTree = "<group>"; };
+		BC5BAA7B27D7F94200BD1D86 /* LoadingIndicatorManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingIndicatorManager.swift; sourceTree = "<group>"; };
+		BC5BAA7D27D7FD0200BD1D86 /* UIApplication+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Extension.swift"; sourceTree = "<group>"; };
+		BC5BAA7F27D8041B00BD1D86 /* LoadingIndicatorManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingIndicatorManagerProtocol.swift; sourceTree = "<group>"; };
 		BC60B40827C57C5E00F2B34B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		BC7C398C27D2B1630031471B /* AddItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemViewController.swift; sourceTree = "<group>"; };
+		BC7C398E27D2B1730031471B /* AddItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemViewModel.swift; sourceTree = "<group>"; };
+		BC7C399027D2B18F0031471B /* AddItemViewBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemViewBuilder.swift; sourceTree = "<group>"; };
+		BC7C399327D3841D0031471B /* AddItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemView.swift; sourceTree = "<group>"; };
+		BC7C399727D4F79C0031471B /* ItemTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTextField.swift; sourceTree = "<group>"; };
 		BC7D9BBF27C03C3500ECD1F6 /* MyToDo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyToDo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC7D9BC227C03C3500ECD1F6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BC7D9BC427C03C3500ECD1F6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -77,6 +95,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BC5BAA7727D7F5C700BD1D86 /* LoadingIndicator */ = {
+			isa = PBXGroup;
+			children = (
+				BC5BAA7827D7F5E800BD1D86 /* LoadingIndicatorViewController.swift */,
+			);
+			path = LoadingIndicator;
+			sourceTree = "<group>";
+		};
+		BC5BAA7A27D7F92800BD1D86 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				BC5BAA7B27D7F94200BD1D86 /* LoadingIndicatorManager.swift */,
+				BC5BAA7F27D8041B00BD1D86 /* LoadingIndicatorManagerProtocol.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
 		BC60B40727C4210200F2B34B /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -84,6 +119,32 @@
 				BCFF012E27C824CD0086BFF0 /* ResponseType.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		BC7C398B27D2B14D0031471B /* AddItem */ = {
+			isa = PBXGroup;
+			children = (
+				BC7C398C27D2B1630031471B /* AddItemViewController.swift */,
+				BC7C398E27D2B1730031471B /* AddItemViewModel.swift */,
+				BC7C399027D2B18F0031471B /* AddItemViewBuilder.swift */,
+			);
+			path = AddItem;
+			sourceTree = "<group>";
+		};
+		BC7C399227D3840F0031471B /* AddItemView */ = {
+			isa = PBXGroup;
+			children = (
+				BC7C399327D3841D0031471B /* AddItemView.swift */,
+			);
+			path = AddItemView;
+			sourceTree = "<group>";
+		};
+		BC7C399527D4F7560031471B /* ItemTextField */ = {
+			isa = PBXGroup;
+			children = (
+				BC7C399727D4F79C0031471B /* ItemTextField.swift */,
+			);
+			path = ItemTextField;
 			sourceTree = "<group>";
 		};
 		BC7D9BB627C03C3500ECD1F6 = {
@@ -124,6 +185,8 @@
 		BC7D9BD627C03D5E00ECD1F6 /* SceneModules */ = {
 			isa = PBXGroup;
 			children = (
+				BC5BAA7727D7F5C700BD1D86 /* LoadingIndicator */,
+				BC7C398B27D2B14D0031471B /* AddItem */,
 				BC7D9BD727C03D6E00ECD1F6 /* Home */,
 			);
 			path = SceneModules;
@@ -151,6 +214,8 @@
 		BC7D9BE127C2DCC200ECD1F6 /* ViewComponents */ = {
 			isa = PBXGroup;
 			children = (
+				BC7C399527D4F7560031471B /* ItemTextField */,
+				BC7C399227D3840F0031471B /* AddItemView */,
 				BC7D9BE527C2DDEC00ECD1F6 /* MainTableView */,
 				BC7D9BE227C2DCD500ECD1F6 /* HomeView */,
 			);
@@ -177,6 +242,7 @@
 		BC7D9BEC27C2E5AC00ECD1F6 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				BC5BAA7A27D7F92800BD1D86 /* Managers */,
 				BCE1818627C6DDD7000D2185 /* Formatters */,
 				BCE1818127C6C4A3000D2185 /* Protocols */,
 				BC7D9BED27C2E5AC00ECD1F6 /* Extensions */,
@@ -189,6 +255,7 @@
 			children = (
 				BC7D9BEE27C2E5AC00ECD1F6 /* UIView+Extension.swift */,
 				BC7D9BEF27C2E5AC00ECD1F6 /* UIViewController+Extension.swift */,
+				BC5BAA7D27D7FD0200BD1D86 /* UIApplication+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -310,14 +377,22 @@
 				BCE1817C27C6BF3F000D2185 /* FirestoreManager.swift in Sources */,
 				BC7D9BF127C2E5AC00ECD1F6 /* UIViewController+Extension.swift in Sources */,
 				BCE1818527C6CC32000D2185 /* TodoItem.swift in Sources */,
+				BC5BAA8027D8041C00BD1D86 /* LoadingIndicatorManagerProtocol.swift in Sources */,
 				BCFF012D27C808B60086BFF0 /* TableViewDataProtocol.swift in Sources */,
+				BC7C399127D2B18F0031471B /* AddItemViewBuilder.swift in Sources */,
+				BC5BAA7927D7F5E800BD1D86 /* LoadingIndicatorViewController.swift in Sources */,
+				BC5BAA7E27D7FD0200BD1D86 /* UIApplication+Extension.swift in Sources */,
 				BC7D9BF027C2E5AC00ECD1F6 /* UIView+Extension.swift in Sources */,
 				BC7D9BC327C03C3500ECD1F6 /* AppDelegate.swift in Sources */,
+				BC7C399427D3841D0031471B /* AddItemView.swift in Sources */,
 				BC7D9BE927C2DFB000ECD1F6 /* MainTableViewCell.swift in Sources */,
+				BC7C399827D4F79C0031471B /* ItemTextField.swift in Sources */,
 				BC7D9BE427C2DCEF00ECD1F6 /* HomeView.swift in Sources */,
 				BC7D9BC527C03C3500ECD1F6 /* SceneDelegate.swift in Sources */,
 				BC7D9BDD27C03DD800ECD1F6 /* HomeViewBuilder.swift in Sources */,
 				BCE1818327C6C4B1000D2185 /* ViewBuilderProtocol.swift in Sources */,
+				BC7C398F27D2B1730031471B /* AddItemViewModel.swift in Sources */,
+				BC7C398D27D2B1630031471B /* AddItemViewController.swift in Sources */,
 				BCE1818027C6C39A000D2185 /* ServiceManagerProtocol.swift in Sources */,
 				BC7D9BD927C03D9F00ECD1F6 /* HomeViewController.swift in Sources */,
 				BC7D9BDB27C03DAA00ECD1F6 /* HomeViewModel.swift in Sources */,
@@ -326,6 +401,7 @@
 				BCE1818827C6DDF1000D2185 /* TodoListDataFormatter.swift in Sources */,
 				BCE1817E27C6BF61000D2185 /* FirestoreCollection.swift in Sources */,
 				BC7D9BE727C2DDF700ECD1F6 /* MainTableView.swift in Sources */,
+				BC5BAA7C27D7F94200BD1D86 /* LoadingIndicatorManager.swift in Sources */,
 				BC7D9BE027C044CD00ECD1F6 /* BaseViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

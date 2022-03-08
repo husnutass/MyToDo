@@ -45,7 +45,7 @@ class MainTableViewCell: UITableViewCell {
     }
     
     private func updateViewData() {
-        titleLabel.text = cellData?.text
+        titleLabel.text = cellData?.title
     }
     
 }

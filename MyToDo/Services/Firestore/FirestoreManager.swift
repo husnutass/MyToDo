@@ -10,6 +10,10 @@ import FirebaseFirestore
 
 class FirestoreManager: ServiceManagerProtocol {
     
+    public static let shared = FirestoreManager()
+    
+    private init() {}
+    
     typealias R = FIRQuerySnapshotBlock
     typealias E = ((Error?) -> Void)
     
