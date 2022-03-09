@@ -21,8 +21,11 @@ class AddItemView: BaseView {
         view.alignment = .fill
         view.distribution = .fill
         view.axis = .vertical
-        view.spacing = 10
-        view.backgroundColor = .systemFill
+        view.spacing = 1
+        view.backgroundColor = .black
+        view.layer.cornerRadius = 10
+        view.clipsToBounds = true
+        view.layer.borderWidth = 2
         return view
     }()
     
@@ -45,11 +48,14 @@ class AddItemView: BaseView {
         
         
         NSLayoutConstraint.activate([
-            containerView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10),
+            containerView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -50),
             containerView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
             containerView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
         ])
         mainStackView.expandView(to: containerView)
+        
+        titleTextField.setData(with: ItemTextFieldData(labelText: "Title"))
+        descriptionTextField.setData(with: ItemTextFieldData(labelText: "Description"))
     }
     
 }
