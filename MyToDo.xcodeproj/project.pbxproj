@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BC1473E227DB973B007B0B84 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1473E127DB973B007B0B84 /* CustomButton.swift */; };
+		BC1473E427DB975B007B0B84 /* CustomButtonData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1473E327DB975B007B0B84 /* CustomButtonData.swift */; };
+		BC1473E827DBE400007B0B84 /* NewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1473E727DBE400007B0B84 /* NewItem.swift */; };
 		BC4AA5E427D942CC00E56D64 /* GenericBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC4AA5E327D942CC00E56D64 /* GenericBaseView.swift */; };
 		BC4AA5E727D9435900E56D64 /* ItemTextFieldData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC4AA5E627D9435900E56D64 /* ItemTextFieldData.swift */; };
 		BC5BAA7927D7F5E800BD1D86 /* LoadingIndicatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5BAA7827D7F5E800BD1D86 /* LoadingIndicatorViewController.swift */; };
@@ -47,6 +50,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BC1473E127DB973B007B0B84 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
+		BC1473E327DB975B007B0B84 /* CustomButtonData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtonData.swift; sourceTree = "<group>"; };
+		BC1473E727DBE400007B0B84 /* NewItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewItem.swift; sourceTree = "<group>"; };
 		BC4AA5E327D942CC00E56D64 /* GenericBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericBaseView.swift; sourceTree = "<group>"; };
 		BC4AA5E627D9435900E56D64 /* ItemTextFieldData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTextFieldData.swift; sourceTree = "<group>"; };
 		BC5BAA7827D7F5E800BD1D86 /* LoadingIndicatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingIndicatorViewController.swift; sourceTree = "<group>"; };
@@ -99,6 +105,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BC1473E027DB9724007B0B84 /* CustomButton */ = {
+			isa = PBXGroup;
+			children = (
+				BC1473E127DB973B007B0B84 /* CustomButton.swift */,
+				BC1473E327DB975B007B0B84 /* CustomButtonData.swift */,
+			);
+			path = CustomButton;
+			sourceTree = "<group>";
+		};
+		BC1473E527DBE3D8007B0B84 /* Response */ = {
+			isa = PBXGroup;
+			children = (
+				BCE1818427C6CC32000D2185 /* TodoItem.swift */,
+				BCFF012E27C824CD0086BFF0 /* ResponseType.swift */,
+			);
+			path = Response;
+			sourceTree = "<group>";
+		};
+		BC1473E627DBE3DE007B0B84 /* Request */ = {
+			isa = PBXGroup;
+			children = (
+				BC1473E727DBE400007B0B84 /* NewItem.swift */,
+			);
+			path = Request;
+			sourceTree = "<group>";
+		};
 		BC5BAA7727D7F5C700BD1D86 /* LoadingIndicator */ = {
 			isa = PBXGroup;
 			children = (
@@ -119,8 +151,8 @@
 		BC60B40727C4210200F2B34B /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				BCE1818427C6CC32000D2185 /* TodoItem.swift */,
-				BCFF012E27C824CD0086BFF0 /* ResponseType.swift */,
+				BC1473E627DBE3DE007B0B84 /* Request */,
+				BC1473E527DBE3D8007B0B84 /* Response */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -220,6 +252,7 @@
 		BC7D9BE127C2DCC200ECD1F6 /* ViewComponents */ = {
 			isa = PBXGroup;
 			children = (
+				BC1473E027DB9724007B0B84 /* CustomButton */,
 				BC7C399527D4F7560031471B /* ItemTextField */,
 				BC7C399227D3840F0031471B /* AddItemView */,
 				BC7D9BE527C2DDEC00ECD1F6 /* MainTableView */,
@@ -380,10 +413,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BC1473E427DB975B007B0B84 /* CustomButtonData.swift in Sources */,
 				BCE1817C27C6BF3F000D2185 /* FirestoreManager.swift in Sources */,
 				BC7D9BF127C2E5AC00ECD1F6 /* UIViewController+Extension.swift in Sources */,
 				BCE1818527C6CC32000D2185 /* TodoItem.swift in Sources */,
 				BC5BAA8027D8041C00BD1D86 /* LoadingIndicatorManagerProtocol.swift in Sources */,
+				BC1473E227DB973B007B0B84 /* CustomButton.swift in Sources */,
 				BCFF012D27C808B60086BFF0 /* TableViewDataProtocol.swift in Sources */,
 				BC7C399127D2B18F0031471B /* AddItemViewBuilder.swift in Sources */,
 				BC5BAA7927D7F5E800BD1D86 /* LoadingIndicatorViewController.swift in Sources */,
@@ -393,6 +428,7 @@
 				BC7C399427D3841D0031471B /* AddItemView.swift in Sources */,
 				BC7D9BE927C2DFB000ECD1F6 /* MainTableViewCell.swift in Sources */,
 				BC7C399827D4F79C0031471B /* ItemTextField.swift in Sources */,
+				BC1473E827DBE400007B0B84 /* NewItem.swift in Sources */,
 				BC7D9BE427C2DCEF00ECD1F6 /* HomeView.swift in Sources */,
 				BC7D9BC527C03C3500ECD1F6 /* SceneDelegate.swift in Sources */,
 				BC7D9BDD27C03DD800ECD1F6 /* HomeViewBuilder.swift in Sources */,

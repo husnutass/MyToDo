@@ -12,10 +12,13 @@ final class AddItemViewController: BaseViewController<AddItemViewModel> {
     private lazy var mainView: AddItemView = {
         let view = AddItemView()
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.delegate = self
         return view
     }()
     
     override func setupView() {
+        setupNavigationBar()
+        
         view.backgroundColor = .systemBackground
         
         view.addSubview(mainView)
@@ -25,9 +28,18 @@ final class AddItemViewController: BaseViewController<AddItemViewModel> {
     
     private func setupNavigationBar() {
         navigationItem.title = "Add new todo item"
-        navigationController?.navigationBar.prefersLargeTitles = true
-        let item = UIBarButtonItem(title: "Close", style: .plain, target: nil, action: nil)
-        navigationItem.setRightBarButton(item, animated: true)
     }
     
+    
+    
+}
+
+extension AddItemViewController {
+    func saveItem(data: NewItem) {
+        print(data)
+    }
+    
+    func cancelAdding() {
+        dismiss(animated: true)
+    }
 }

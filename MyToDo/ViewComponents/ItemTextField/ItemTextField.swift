@@ -9,6 +9,8 @@ import UIKit
 
 class ItemTextField: GenericBaseView<ItemTextFieldData> {
     
+    private var listener: TextListenerBlock?
+    
     private lazy var containerView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -44,6 +46,7 @@ class ItemTextField: GenericBaseView<ItemTextFieldData> {
         let textField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.backgroundColor = .secondarySystemBackground
+        textField.delegate = self
         return textField
     }()
     
@@ -54,7 +57,7 @@ class ItemTextField: GenericBaseView<ItemTextFieldData> {
         containerView.expandView(to: self)
         mainStackView.expandView(to: containerView, top: 0, bottom: 0, leading: 10, trailing: -10)
         NSLayoutConstraint.activate([
-            containerView.heightAnchor.constraint(equalToConstant: 40),
+            containerView.heightAnchor.constraint(equalToConstant: 50),
             textLabel.widthAnchor.constraint(equalToConstant: 80),
             labelBorder.widthAnchor.constraint(equalToConstant: 1)
         ])
@@ -63,6 +66,13 @@ class ItemTextField: GenericBaseView<ItemTextFieldData> {
     override func reloadViewData() {
         guard let data = getData() else { return }
         textLabel.text = data.labelText
+        listener = data.textListener
     }
     
+}
+
+extension ItemTextField: UITextFieldDelegate {
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        listener?(textField.text)
+    }
 }

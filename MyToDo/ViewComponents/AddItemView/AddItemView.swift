@@ -9,13 +9,17 @@ import UIKit
 
 class AddItemView: BaseView {
     
+    weak var delegate: AddItemViewController?
+    private var title: String?
+    private var todoListDescription: String?
+    
     private lazy var containerView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
-    private lazy var mainStackView: UIStackView = {
+    private lazy var inputStackView: UIStackView = {
         let view = UIStackView(arrangedSubviews: [titleTextField, descriptionTextField])
         view.translatesAutoresizingMaskIntoConstraints = false
         view.alignment = .fill
@@ -41,21 +45,74 @@ class AddItemView: BaseView {
         return textField
     }()
     
+    private lazy var buttonStackView: UIStackView = {
+        let view = UIStackView(arrangedSubviews: [saveButton, cancelButton])
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.alignment = .fill
+        view.distribution = .fill
+        view.axis = .vertical
+        view.spacing = 10
+        return view
+    }()
+    
+    private lazy var saveButton: CustomButton = {
+        let button = CustomButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
+    private lazy var cancelButton: CustomButton = {
+        let button = CustomButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
     override func setupView() {
         
         addSubview(containerView)
-        containerView.addSubview(mainStackView)
+        containerView.addSubview(inputStackView)
+        containerView.addSubview(buttonStackView)
         
         
         NSLayoutConstraint.activate([
             containerView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -50),
             containerView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
             containerView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
+            
+            inputStackView.topAnchor.constraint(equalTo: containerView.topAnchor),
+            inputStackView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
+            inputStackView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
+            
+            buttonStackView.topAnchor.constraint(equalTo: inputStackView.bottomAnchor, constant: 60),
+            buttonStackView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor),
+            buttonStackView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
+            buttonStackView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor)
         ])
-        mainStackView.expandView(to: containerView)
         
-        titleTextField.setData(with: ItemTextFieldData(labelText: "Title"))
-        descriptionTextField.setData(with: ItemTextFieldData(labelText: "Description"))
+        titleTextField.setData(with: ItemTextFieldData(labelText: "Title", textListener: titleListener))
+        descriptionTextField.setData(with: ItemTextFieldData(labelText: "Description", textListener: descriptionListener))
+        saveButton.setData(with: CustomButtonData(title: "Save", backgroundColor: .systemOrange, action: #selector(saveItem), height: 50))
+        cancelButton.setData(with: CustomButtonData(title: "Cancel", backgroundColor: .systemRed, action: #selector(cancelAdding), height: 50))
+    }
+    
+    @objc private func saveItem() {
+        guard let title = title, !title.isEmpty else { return }
+        let newItem = NewItem(title: title, todoListDescription: todoListDescription)
+        delegate?.saveItem(data: newItem)
+    }
+    
+    @objc private func cancelAdding() {
+        delegate?.cancelAdding()
+    }
+    
+    private lazy var titleListener: TextListenerBlock = { [weak self] title in
+        guard let title = title else { return }
+        self?.title = title
+    }
+    
+    private lazy var descriptionListener: TextListenerBlock = { [weak self] desc in
+        guard let desc = desc else { return }
+        self?.todoListDescription = desc
     }
     
 }
