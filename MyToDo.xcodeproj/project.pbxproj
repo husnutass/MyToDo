@@ -13,6 +13,7 @@
 		BC1473EA27DCB335007B0B84 /* NewItemDataFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1473E927DCB335007B0B84 /* NewItemDataFormatter.swift */; };
 		BC1473EF27DCBB24007B0B84 /* DataNotifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1473EE27DCBB24007B0B84 /* DataNotifier.swift */; };
 		BC1473F127DCBB39007B0B84 /* DataNotifierProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1473F027DCBB39007B0B84 /* DataNotifierProtocol.swift */; };
+		BC1473F927DCD0CA007B0B84 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1473F827DCD0CA007B0B84 /* UIImage+Extension.swift */; };
 		BC4AA5E427D942CC00E56D64 /* GenericBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC4AA5E327D942CC00E56D64 /* GenericBaseView.swift */; };
 		BC4AA5E727D9435900E56D64 /* ItemTextFieldData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC4AA5E627D9435900E56D64 /* ItemTextFieldData.swift */; };
 		BC5BAA7927D7F5E800BD1D86 /* LoadingIndicatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5BAA7827D7F5E800BD1D86 /* LoadingIndicatorViewController.swift */; };
@@ -59,6 +60,7 @@
 		BC1473E927DCB335007B0B84 /* NewItemDataFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewItemDataFormatter.swift; sourceTree = "<group>"; };
 		BC1473EE27DCBB24007B0B84 /* DataNotifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataNotifier.swift; sourceTree = "<group>"; };
 		BC1473F027DCBB39007B0B84 /* DataNotifierProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataNotifierProtocol.swift; sourceTree = "<group>"; };
+		BC1473F827DCD0CA007B0B84 /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		BC4AA5E327D942CC00E56D64 /* GenericBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericBaseView.swift; sourceTree = "<group>"; };
 		BC4AA5E627D9435900E56D64 /* ItemTextFieldData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTextFieldData.swift; sourceTree = "<group>"; };
 		BC5BAA7827D7F5E800BD1D86 /* LoadingIndicatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingIndicatorViewController.swift; sourceTree = "<group>"; };
@@ -319,6 +321,7 @@
 				BC7D9BEE27C2E5AC00ECD1F6 /* UIView+Extension.swift */,
 				BC7D9BEF27C2E5AC00ECD1F6 /* UIViewController+Extension.swift */,
 				BC5BAA7D27D7FD0200BD1D86 /* UIApplication+Extension.swift */,
+				BC1473F827DCD0CA007B0B84 /* UIImage+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -473,6 +476,7 @@
 				BCE1817E27C6BF61000D2185 /* FirestoreCollection.swift in Sources */,
 				BC4AA5E727D9435900E56D64 /* ItemTextFieldData.swift in Sources */,
 				BC7D9BE727C2DDF700ECD1F6 /* MainTableView.swift in Sources */,
+				BC1473F927DCD0CA007B0B84 /* UIImage+Extension.swift in Sources */,
 				BC5BAA7C27D7F94200BD1D86 /* LoadingIndicatorManager.swift in Sources */,
 				BC7D9BE027C044CD00ECD1F6 /* BaseViewController.swift in Sources */,
 			);

@@ -19,6 +19,14 @@ class AddItemView: BaseView {
         return view
     }()
     
+    private lazy var imageView: UIImageView = {
+        let view = UIImageView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.image = .addItem
+        view.contentMode = .scaleAspectFit
+        return view
+    }()
+    
     private lazy var inputStackView: UIStackView = {
         let view = UIStackView(arrangedSubviews: [titleTextField, descriptionTextField])
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -69,15 +77,20 @@ class AddItemView: BaseView {
     
     override func setupView() {
         addSubview(containerView)
+        containerView.addSubview(imageView)
         containerView.addSubview(inputStackView)
         containerView.addSubview(buttonStackView)
         
         NSLayoutConstraint.activate([
-            containerView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -50),
+            containerView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -60),
             containerView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
             containerView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
             
-            inputStackView.topAnchor.constraint(equalTo: containerView.topAnchor),
+            imageView.topAnchor.constraint(equalTo: containerView.topAnchor),
+            imageView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
+            imageView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
+            
+            inputStackView.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 80),
             inputStackView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
             inputStackView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
             
