@@ -157,6 +157,31 @@
 			path = DataNotifierManager;
 			sourceTree = "<group>";
 		};
+		BC1473FA27DCDDA7007B0B84 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				BC7D9BC227C03C3500ECD1F6 /* AppDelegate.swift */,
+				BC7D9BC427C03C3500ECD1F6 /* SceneDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		BC1473FB27DCDDCB007B0B84 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				BC7D9BCB27C03C3600ECD1F6 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		BC1473FC27DCDE0A007B0B84 /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				BC7D9BCD27C03C3600ECD1F6 /* LaunchScreen.storyboard */,
+			);
+			path = SupportingFiles;
+			sourceTree = "<group>";
+		};
 		BC5BAA7727D7F5C700BD1D86 /* LoadingIndicator */ = {
 			isa = PBXGroup;
 			children = (
@@ -229,16 +254,15 @@
 		BC7D9BC127C03C3500ECD1F6 /* MyToDo */ = {
 			isa = PBXGroup;
 			children = (
-				BCE1817927C6BF17000D2185 /* Services */,
-				BC60B40727C4210200F2B34B /* Models */,
-				BC7D9BE127C2DCC200ECD1F6 /* ViewComponents */,
+				BC1473FA27DCDDA7007B0B84 /* App */,
 				BC7D9BDE27C0448C00ECD1F6 /* BaseComponents */,
 				BC7D9BD627C03D5E00ECD1F6 /* SceneModules */,
+				BC7D9BE127C2DCC200ECD1F6 /* ViewComponents */,
+				BCE1817927C6BF17000D2185 /* Services */,
+				BC60B40727C4210200F2B34B /* Models */,
 				BC7D9BEC27C2E5AC00ECD1F6 /* Utils */,
-				BC7D9BC227C03C3500ECD1F6 /* AppDelegate.swift */,
-				BC7D9BC427C03C3500ECD1F6 /* SceneDelegate.swift */,
-				BC7D9BCB27C03C3600ECD1F6 /* Assets.xcassets */,
-				BC7D9BCD27C03C3600ECD1F6 /* LaunchScreen.storyboard */,
+				BC1473FB27DCDDCB007B0B84 /* Resources */,
+				BC1473FC27DCDE0A007B0B84 /* SupportingFiles */,
 				BC60B40827C57C5E00F2B34B /* GoogleService-Info.plist */,
 				BC7D9BD027C03C3600ECD1F6 /* Info.plist */,
 			);
