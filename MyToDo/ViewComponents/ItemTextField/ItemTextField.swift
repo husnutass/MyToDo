@@ -47,6 +47,7 @@ class ItemTextField: GenericBaseView<ItemTextFieldData> {
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.backgroundColor = .secondarySystemBackground
         textField.delegate = self
+        textField.addTarget(self, action: #selector(catchTextChanges), for: .editingChanged)
         return textField
     }()
     
@@ -69,10 +70,17 @@ class ItemTextField: GenericBaseView<ItemTextFieldData> {
         listener = data.textListener
     }
     
+    @objc private func catchTextChanges(_ sender: UITextField) {
+        guard let text = sender.text else { return }
+        listener?(text)
+    }
+    
 }
 
+// MARK: - UITextFieldDelegate
 extension ItemTextField: UITextFieldDelegate {
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        listener?(textField.text)
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return false
     }
 }

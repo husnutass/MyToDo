@@ -9,6 +9,6 @@ import Foundation
 
 enum ResponseType {
     case loading
-    case success
+    case success(shouldReload: Bool)
     case failure
 }

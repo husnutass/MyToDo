@@ -10,11 +10,11 @@ import Foundation
 class AddItemViewModel {
     
     private let firestoreManager = FirestoreManager.shared
-    var dataNotifier: ResponseBlock?
+    var dataNotifier = DataNotifier.shared
     
-    func saveData() {
-        let data = ["text" : "deneme"]
-        dataNotifier?(.loading)
+    func saveData(newItem: NewItem) {
+        guard let data = NewItemDataFormatter.formatData(data: newItem) else { return }
+        dataNotifier.publishData(response: .loading)
         firestoreManager.saveData(collection: .todos, data: data, completion: saveDataHandler)
     }
     
@@ -22,15 +22,10 @@ class AddItemViewModel {
     lazy var saveDataHandler: FirestoreManager.E = { [weak self] error in
         if let error = error {
             print(error.localizedDescription)
-            self?.dataNotifier?(.failure)
+            self?.dataNotifier.publishData(response: .failure)
         } else {
-            print("Success")
-            self?.dataNotifier?(.success)
+            self?.dataNotifier.publishData(response: .success(shouldReload: false))
         }
     }
-    
-    // MARK: - Data Subscribables
-    func subscribeData(with notifier: @escaping ResponseBlock) {
-        dataNotifier = notifier
-    }
+
 }

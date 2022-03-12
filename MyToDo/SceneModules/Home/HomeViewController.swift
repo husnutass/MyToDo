@@ -7,7 +7,7 @@
 
 import UIKit
 
-class HomeViewController: BaseViewController<HomeViewModel> {
+final class HomeViewController: BaseViewController<HomeViewModel> {
     
     // MARK: - View Components
     private lazy var homeView: HomeView = {
@@ -25,7 +25,7 @@ class HomeViewController: BaseViewController<HomeViewModel> {
         
         homeView.expandViewWithSafeArea(to: view)
         
-        viewModel.subscribeData(with: dataHandler)
+        dataNotifier.subscribeData(key: String(describing: self), notifier: dataHandler)
         viewModel.fetchData()
     }
     
@@ -43,28 +43,21 @@ class HomeViewController: BaseViewController<HomeViewModel> {
         present(AddItemViewBuilder.build(), animated: true, completion: nil)
     }
     
-    private func showIndicatorView() {
-        LoadingIndicatorManager.shared.startLoading()
-    }
-    
-    private func hideIndicatorView() {
-        LoadingIndicatorManager.shared.stopLoading()
-    }
-    
+    // MARK: - Data Handlers
     private lazy var dataHandler: ResponseBlock = { [weak self] response in
         DispatchQueue.main.async {
             switch response {
-            case .loading:
-                self?.showIndicatorView()
-            case .failure:
-                self?.hideIndicatorView()
+            case .success(let reload):
+                guard reload else { return }
                 self?.homeView.reloadTableView()
-                self?.showAlert(title: "Error Occured!")
-            case .success:
-                self?.hideIndicatorView()
-                self?.homeView.reloadTableView()
+            default:
+                return
             }
         }
+    }
+    
+    deinit {
+        dataNotifier.unsubscribeData(key: String(describing: self))
     }
 
 }

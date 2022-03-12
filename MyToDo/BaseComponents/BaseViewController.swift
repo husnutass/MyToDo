@@ -10,6 +10,7 @@ import UIKit
 class BaseViewController<V>: UIViewController {
     
     var viewModel: V!
+    let dataNotifier = DataNotifier.shared
     
     convenience init(viewModel: V) {
         self.init()

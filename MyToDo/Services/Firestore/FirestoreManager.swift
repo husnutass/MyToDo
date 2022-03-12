@@ -20,7 +20,8 @@ class FirestoreManager: ServiceManagerProtocol {
     private let db = Firestore.firestore()
     
     func fetchData(collection: FirestoreCollection, completion: @escaping R) {
-        db.collection(collection.rawValue).getDocuments(completion: completion)
+//        db.collection(collection.rawValue).getDocuments(completion: completion)
+        db.collection(collection.rawValue).addSnapshotListener(completion)
     }
     
     func saveData(collection: FirestoreCollection, data: [String : Any], completion: @escaping E) {

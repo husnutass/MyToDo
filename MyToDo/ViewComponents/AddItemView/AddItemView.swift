@@ -68,11 +68,9 @@ class AddItemView: BaseView {
     }()
     
     override func setupView() {
-        
         addSubview(containerView)
         containerView.addSubview(inputStackView)
         containerView.addSubview(buttonStackView)
-        
         
         NSLayoutConstraint.activate([
             containerView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -50),
@@ -89,6 +87,10 @@ class AddItemView: BaseView {
             buttonStackView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor)
         ])
         
+        setupViewData()
+    }
+    
+    private func setupViewData() {
         titleTextField.setData(with: ItemTextFieldData(labelText: "Title", textListener: titleListener))
         descriptionTextField.setData(with: ItemTextFieldData(labelText: "Description", textListener: descriptionListener))
         saveButton.setData(with: CustomButtonData(title: "Save", backgroundColor: .systemOrange, action: #selector(saveItem), height: 50))

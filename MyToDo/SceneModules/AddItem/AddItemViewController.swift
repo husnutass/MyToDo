@@ -9,6 +9,7 @@ import UIKit
 
 final class AddItemViewController: BaseViewController<AddItemViewModel> {
     
+    // MARK: - View Components
     private lazy var mainView: AddItemView = {
         let view = AddItemView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -24,19 +25,35 @@ final class AddItemViewController: BaseViewController<AddItemViewModel> {
         view.addSubview(mainView)
         
         mainView.expandViewWithSafeArea(to: view)
+        
+        dataNotifier.subscribeData(key: String(describing: self), notifier: dataHandler)
     }
     
     private func setupNavigationBar() {
         navigationItem.title = "Add new todo item"
     }
     
+    // MARK: - Data Handlers
+    private lazy var dataHandler: ResponseBlock = { [weak self] response in
+        DispatchQueue.main.async {
+            switch response {
+            case .success(_):
+                self?.dismiss(animated: true)
+            default:
+                return
+            }
+        }
+    }
     
+    deinit {
+        dataNotifier.unsubscribeData(key: String(describing: self))
+    }
     
 }
 
 extension AddItemViewController {
     func saveItem(data: NewItem) {
-        print(data)
+        viewModel.saveData(newItem: data)
     }
     
     func cancelAdding() {

@@ -10,6 +10,9 @@
 		BC1473E227DB973B007B0B84 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1473E127DB973B007B0B84 /* CustomButton.swift */; };
 		BC1473E427DB975B007B0B84 /* CustomButtonData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1473E327DB975B007B0B84 /* CustomButtonData.swift */; };
 		BC1473E827DBE400007B0B84 /* NewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1473E727DBE400007B0B84 /* NewItem.swift */; };
+		BC1473EA27DCB335007B0B84 /* NewItemDataFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1473E927DCB335007B0B84 /* NewItemDataFormatter.swift */; };
+		BC1473EF27DCBB24007B0B84 /* DataNotifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1473EE27DCBB24007B0B84 /* DataNotifier.swift */; };
+		BC1473F127DCBB39007B0B84 /* DataNotifierProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1473F027DCBB39007B0B84 /* DataNotifierProtocol.swift */; };
 		BC4AA5E427D942CC00E56D64 /* GenericBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC4AA5E327D942CC00E56D64 /* GenericBaseView.swift */; };
 		BC4AA5E727D9435900E56D64 /* ItemTextFieldData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC4AA5E627D9435900E56D64 /* ItemTextFieldData.swift */; };
 		BC5BAA7927D7F5E800BD1D86 /* LoadingIndicatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5BAA7827D7F5E800BD1D86 /* LoadingIndicatorViewController.swift */; };
@@ -53,6 +56,9 @@
 		BC1473E127DB973B007B0B84 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		BC1473E327DB975B007B0B84 /* CustomButtonData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtonData.swift; sourceTree = "<group>"; };
 		BC1473E727DBE400007B0B84 /* NewItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewItem.swift; sourceTree = "<group>"; };
+		BC1473E927DCB335007B0B84 /* NewItemDataFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewItemDataFormatter.swift; sourceTree = "<group>"; };
+		BC1473EE27DCBB24007B0B84 /* DataNotifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataNotifier.swift; sourceTree = "<group>"; };
+		BC1473F027DCBB39007B0B84 /* DataNotifierProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataNotifierProtocol.swift; sourceTree = "<group>"; };
 		BC4AA5E327D942CC00E56D64 /* GenericBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericBaseView.swift; sourceTree = "<group>"; };
 		BC4AA5E627D9435900E56D64 /* ItemTextFieldData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTextFieldData.swift; sourceTree = "<group>"; };
 		BC5BAA7827D7F5E800BD1D86 /* LoadingIndicatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingIndicatorViewController.swift; sourceTree = "<group>"; };
@@ -131,6 +137,24 @@
 			path = Request;
 			sourceTree = "<group>";
 		};
+		BC1473EB27DCBAEF007B0B84 /* LoadingIndicatorManager */ = {
+			isa = PBXGroup;
+			children = (
+				BC5BAA7B27D7F94200BD1D86 /* LoadingIndicatorManager.swift */,
+				BC5BAA7F27D8041B00BD1D86 /* LoadingIndicatorManagerProtocol.swift */,
+			);
+			path = LoadingIndicatorManager;
+			sourceTree = "<group>";
+		};
+		BC1473EC27DCBB06007B0B84 /* DataNotifierManager */ = {
+			isa = PBXGroup;
+			children = (
+				BC1473EE27DCBB24007B0B84 /* DataNotifier.swift */,
+				BC1473F027DCBB39007B0B84 /* DataNotifierProtocol.swift */,
+			);
+			path = DataNotifierManager;
+			sourceTree = "<group>";
+		};
 		BC5BAA7727D7F5C700BD1D86 /* LoadingIndicator */ = {
 			isa = PBXGroup;
 			children = (
@@ -142,8 +166,8 @@
 		BC5BAA7A27D7F92800BD1D86 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
-				BC5BAA7B27D7F94200BD1D86 /* LoadingIndicatorManager.swift */,
-				BC5BAA7F27D8041B00BD1D86 /* LoadingIndicatorManagerProtocol.swift */,
+				BC1473EC27DCBB06007B0B84 /* DataNotifierManager */,
+				BC1473EB27DCBAEF007B0B84 /* LoadingIndicatorManager */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -330,6 +354,7 @@
 			isa = PBXGroup;
 			children = (
 				BCE1818727C6DDF1000D2185 /* TodoListDataFormatter.swift */,
+				BC1473E927DCB335007B0B84 /* NewItemDataFormatter.swift */,
 			);
 			path = Formatters;
 			sourceTree = "<group>";
@@ -423,6 +448,7 @@
 				BC7C399127D2B18F0031471B /* AddItemViewBuilder.swift in Sources */,
 				BC5BAA7927D7F5E800BD1D86 /* LoadingIndicatorViewController.swift in Sources */,
 				BC5BAA7E27D7FD0200BD1D86 /* UIApplication+Extension.swift in Sources */,
+				BC1473EA27DCB335007B0B84 /* NewItemDataFormatter.swift in Sources */,
 				BC7D9BF027C2E5AC00ECD1F6 /* UIView+Extension.swift in Sources */,
 				BC7D9BC327C03C3500ECD1F6 /* AppDelegate.swift in Sources */,
 				BC7C399427D3841D0031471B /* AddItemView.swift in Sources */,
@@ -435,6 +461,8 @@
 				BCE1818327C6C4B1000D2185 /* ViewBuilderProtocol.swift in Sources */,
 				BC7C398F27D2B1730031471B /* AddItemViewModel.swift in Sources */,
 				BC7C398D27D2B1630031471B /* AddItemViewController.swift in Sources */,
+				BC1473EF27DCBB24007B0B84 /* DataNotifier.swift in Sources */,
+				BC1473F127DCBB39007B0B84 /* DataNotifierProtocol.swift in Sources */,
 				BCE1818027C6C39A000D2185 /* ServiceManagerProtocol.swift in Sources */,
 				BC7D9BD927C03D9F00ECD1F6 /* HomeViewController.swift in Sources */,
 				BC7D9BDB27C03DAA00ECD1F6 /* HomeViewModel.swift in Sources */,

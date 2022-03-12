@@ -14,17 +14,17 @@ class HomeViewModel {
     
     private let firestoreManager = FirestoreManager.shared
     private var todoList: [TodoItem] = []
-    var dataNotifier: ResponseBlock?
+    private let dataNotifier = DataNotifier.shared
     private var itemIndexToBeDeleted: Int?
     
     // MARK: - Service Calls
     func fetchData() {
-        dataNotifier?(.loading)
+        dataNotifier.publishData(response: .loading)
         firestoreManager.fetchData(collection: .todos, completion: dataHandler)
     }
     
     func deleteData(document: String) {
-        dataNotifier?(.loading)
+        dataNotifier.publishData(response: .loading)
         firestoreManager.deleteData(collection: .todos, document: document, completion: deleteDataHandler)
     }
 
@@ -33,32 +33,27 @@ class HomeViewModel {
     lazy var dataHandler: FirestoreManager.R = { [weak self] snapshot, error in
         if let error = error {
             print(error.localizedDescription)
-            self?.dataNotifier?(.failure)
+            self?.dataNotifier.publishData(response: .failure)
         } else if let snapshot = snapshot {
+            self?.todoList.removeAll()
             for document in snapshot.documents {
                 self?.todoList.append(TodoListDataFormatter.formatData(data: document.data(), documentID: document.documentID))
             }
-            self?.dataNotifier?(.success)
+            self?.dataNotifier.publishData(response: .success(shouldReload: true))
         }
     }
     
     lazy var deleteDataHandler: FirestoreManager.E = { [weak self] error in
         if let error = error {
             print(error.localizedDescription)
-            self?.dataNotifier?(.failure)
+            self?.dataNotifier.publishData(response: .failure)
         } else {
             guard let index = self?.itemIndexToBeDeleted else {
-                self?.dataNotifier?(.failure)
+                self?.dataNotifier.publishData(response: .failure)
                 return
             }
-            self?.todoList.remove(at: index)
-            self?.dataNotifier?(.success)
+            self?.dataNotifier.publishData(response: .success(shouldReload: false))
         }
-    }
-    
-    // MARK: - Data Subscribables
-    func subscribeData(with notifier: @escaping ResponseBlock) {
-        dataNotifier = notifier
     }
     
 }
