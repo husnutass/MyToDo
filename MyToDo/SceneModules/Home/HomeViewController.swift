@@ -25,7 +25,7 @@ final class HomeViewController: BaseViewController<HomeViewModel> {
         
         homeView.expandViewWithSafeArea(to: view)
         
-        dataNotifier.subscribeData(key: String(describing: self), notifier: dataHandler)
+        dataNotifier.subscribeData(key: identifier, notifier: dataHandler)
         viewModel.fetchData()
     }
     
@@ -54,10 +54,6 @@ final class HomeViewController: BaseViewController<HomeViewModel> {
                 return
             }
         }
-    }
-    
-    deinit {
-        dataNotifier.unsubscribeData(key: String(describing: self))
     }
 
 }

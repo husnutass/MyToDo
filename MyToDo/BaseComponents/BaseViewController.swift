@@ -9,6 +9,9 @@ import UIKit
 
 class BaseViewController<V>: UIViewController {
     
+    var identifier: String {
+       String(describing: self)
+    }
     var viewModel: V!
     let dataNotifier = DataNotifier.shared
     
@@ -23,5 +26,9 @@ class BaseViewController<V>: UIViewController {
     }
     
     func setupView() {}
-
+    
+    deinit {
+        dataNotifier.unsubscribeData(key: identifier)
+    }
+    
 }

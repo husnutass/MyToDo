@@ -26,7 +26,7 @@ final class AddItemViewController: BaseViewController<AddItemViewModel> {
         
         mainView.expandViewWithSafeArea(to: view)
         
-        dataNotifier.subscribeData(key: String(describing: self), notifier: dataHandler)
+        dataNotifier.subscribeData(key: identifier, notifier: dataHandler)
     }
     
     private func setupNavigationBar() {
@@ -43,10 +43,6 @@ final class AddItemViewController: BaseViewController<AddItemViewModel> {
                 return
             }
         }
-    }
-    
-    deinit {
-        dataNotifier.unsubscribeData(key: String(describing: self))
     }
     
 }
