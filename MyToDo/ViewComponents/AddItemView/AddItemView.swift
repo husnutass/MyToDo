@@ -12,6 +12,8 @@ class AddItemView: BaseView {
     weak var delegate: AddItemViewController?
     private var title: String?
     private var todoListDescription: String?
+    private var containerBottomConstraint: NSLayoutConstraint!
+    private let bottomConstant: CGFloat = -60
     
     private lazy var containerView: UIView = {
         let view = UIView()
@@ -44,12 +46,14 @@ class AddItemView: BaseView {
     private lazy var titleTextField: ItemTextField = {
         let textField = ItemTextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
+        textField.delegate = self
         return textField
     }()
     
     private lazy var descriptionTextField: ItemTextField = {
         let textField = ItemTextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
+        textField.delegate = self
         return textField
     }()
     
@@ -81,8 +85,9 @@ class AddItemView: BaseView {
         containerView.addSubview(inputStackView)
         containerView.addSubview(buttonStackView)
         
+        containerBottomConstraint = containerView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: bottomConstant)
         NSLayoutConstraint.activate([
-            containerView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -60),
+            containerBottomConstraint,
             containerView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
             containerView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
             
@@ -101,6 +106,7 @@ class AddItemView: BaseView {
         ])
         
         setupViewData()
+        addTapGesture()
     }
     
     private func setupViewData() {
@@ -120,6 +126,7 @@ class AddItemView: BaseView {
         delegate?.cancelAdding()
     }
     
+    // MARK: - TextField Listeners
     private lazy var titleListener: TextListenerBlock = { [weak self] title in
         guard let title = title else { return }
         self?.title = title
@@ -130,4 +137,28 @@ class AddItemView: BaseView {
         self?.todoListDescription = desc
     }
     
+    func moveViewUp(by constant: CGFloat) {
+        containerBottomConstraint.constant = -constant
+        layoutIfNeeded()
+    }
+    
+    func closeKeyboard() {
+        endEditing(true)
+        containerBottomConstraint.constant = bottomConstant
+        layoutIfNeeded()
+    }
+    
+}
+
+// MARK: - UIGestureRecognizerDelegate
+extension AddItemView: UIGestureRecognizerDelegate {
+    private func addTapGesture() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapGestureAction))
+        tapGesture.delegate = self
+        addGestureRecognizer(tapGesture)
+    }
+    
+    @objc private func tapGestureAction() {
+        closeKeyboard()
+    }
 }

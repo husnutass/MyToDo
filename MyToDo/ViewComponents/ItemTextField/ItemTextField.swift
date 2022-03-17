@@ -10,6 +10,7 @@ import UIKit
 class ItemTextField: GenericBaseView<ItemTextFieldData> {
     
     private var listener: TextListenerBlock?
+    weak var delegate: AddItemView?
     
     private lazy var containerView: UIView = {
         let view = UIView()
@@ -80,7 +81,11 @@ class ItemTextField: GenericBaseView<ItemTextFieldData> {
 // MARK: - UITextFieldDelegate
 extension ItemTextField: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
+        delegate?.closeKeyboard()
         return false
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        delegate?.moveViewUp(by: 200)
     }
 }
