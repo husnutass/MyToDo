@@ -33,8 +33,6 @@ final class AddItemViewController: BaseViewController<AddItemViewModel> {
         navigationItem.title = "Add new todo item"
     }
     
-    var responder = UIResponder()
-    
     // MARK: - Data Handlers
     private lazy var dataHandler: ResponseBlock = { [weak self] response in
         DispatchQueue.main.async {
